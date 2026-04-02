@@ -1,0 +1,315 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap');
+:root {
+     --bg: #0a0a0f;
+  --surface: #111118;
+  --border: rgba(255, 255, 255, 0.07);
+  --gold: #f5c518;
+  --gold-dim: rgba(245, 197, 24, 0.12);
+  --text: #e2e2e2;
+  --muted: #555;
+  --red: #e63946;
+  padding-bottom:0;
+}
+
+* {box-sizing: border-box; margin: 0;padding :0;}
+
+.footer-wrap{
+    background:var(--bg);
+    font-family:'DM Sans' , sans-serif;
+    color: var(--text);
+}
+.footer-main {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr; /* desktop */
+  gap: 48px;
+  padding: 52px 56px;
+  border-bottom: 1px solid var(--border);
+}
+
+@media (max-width: 1024px) {
+  .footer-main {
+    grid-template-columns: 1fr 1fr;
+    padding: 40px 32px;
+    gap: 32px;
+  }
+}
+
+@media (max-width: 520px) {
+  .footer-main {
+    grid-template-columns: 1fr;
+    padding: 28px 18px;
+  }
+}
+
+.brand-logo{
+font-family: 'Bebas Neve',sans-serif;
+font-size: 28px;
+letter-spacing: 3px;
+color:#ffff;
+display:flex;
+align-items: center;
+gap:9px;
+margin-bottom:13px;
+}
+.logo-dot{
+    width:9px;
+    height:9px;
+    background: var(--red);
+    display: inline-block;
+    box-shadow:0 0 8px var(--red);
+}
+
+.brand-desc{
+    font-size:13px;
+    line-height:1.75;
+     color: var(--muted);
+  margin-bottom: 20px;
+  font-weight: 300;
+  max-width: 270px;
+}
+.social-row{
+    display:flex;
+     gap:8px;
+     flex-wrap:wrap;
+}
+.social-btn{
+    width:33px;
+    height:33px;
+    border:1px solid var(--border);
+    background: transparent;
+    color:var(--muted);
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+text-decoration: none;
+transition: all 0.2s;
+}
+.social-btn:hover{
+    background:var(--gold-dim);
+    border-color:var(--gold);
+    color:var(--gold);
+    transform:translateY(-6px);
+}
+.col-title{
+    font-size:10px;
+    letter-spacing:2.5px;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin-bottom: 16px;
+    font-weight:500;
+}
+
+.footer-links{
+    list-style:none;
+    display:flex;
+    flex-direction: column;
+    gap:11px;
+
+}
+
+.footer-links a{
+    color:var(--muted);
+    text-decoration:none;
+    font-size:13px;
+    font-weight:300;
+    transition:color 0.2s, padding-left 0.2s;
+    display:inline-block;
+}
+
+.footer-links a:hover{
+    color:var(--text);
+    padding-left:5px;
+
+}
+
+.newsletter-label{
+font-size:12px;
+color:var(--muted);
+margin-bottom:12px;
+line-height:1.6;
+font-weight: 300;
+}
+
+.newsletter-row{
+    display:flex;
+}
+
+.newsletter-input{
+    flex:1;
+    background: var(--surface);
+    border:1px solid var(--border);
+    border-right:none;
+    color:var(--text);
+    padding:10px 12px;
+    font-size:12px;
+    font-family:'DM Sans', sans-serif;
+    outline:none;
+    transition:border-color 0.2s;
+     min-width:0;
+}
+.newsletter-input:focus{
+border-color:var(--gold);
+}
+.newsletter-input.input-error{
+    border-color:var(--red);
+}
+.newsletter-btn {
+    background: var(--gold);
+    color:#0a0a0f;
+    border:none;
+    padding:10px 14px;
+    font-size:11px;
+    font-weight: 600;
+    cursor:pointer;
+    font-family:'DM Sans', sans-serif;
+    white-space:nowrap;
+    transition:opacity 0.2s;
+}
+
+.newsletter-btn:disabled{
+    opacity:0.7;cursor:default;
+}
+.newsletter-btn.success{
+    background:#2a9d5c; 
+    color:white;
+}
+.newsletter-btn.lodding{
+    background: #777;
+}
+.newsletter-err{
+    font-size:11px;
+    color:var(--red);
+    margin-top:5px;
+}
+.footer-bottom{
+    padding:20px 56px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media(max-width:900px){
+    .footer-bottom{
+        padding: 16px 32px;
+    }
+
+}
+.footer-copy{
+    font-size:12px;color:var(--muted);
+    font-weight:300;
+    text-align:center;
+}
+.footer-copy span{
+    color:var(--gold);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* toggle swith theam css */
+
+
+
+.toggle-switch {
+    margin-top: 30px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 90px;
+  height: 46px;
+  background-color:var(--gold);
+  border-radius: 999px;
+  padding: 6px;
+  cursor: pointer;
+  box-sizing: border-box;
+  transition: background-color 0.3s ease;
+  position: relative;
+  user-select: none;
+}
+ 
+/* When toggled ON — move thumb to right, change bg */
+.toggle-switch.on {
+  background-color: #4cd964; /* green — swap for your brand color */
+  justify-content: flex-end;
+}
+ 
+/* Thumb (the sliding circle) */
+.switch {
+  width: 38px;
+  height: 38px;
+  background-color: #e5ff00;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  flex-shrink: 0;
+}
+ 
+/* Label inside the thumb */
+.switch-state {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: #eeff00;
+  font-family: 'SF Pro Text', 'Helvetica Neue', sans-serif;
+  transition: color 0.3s ease;
+}
+ 
+.toggle-switch.on .switch-state {
+  color: #4cd964;
+}
+.ON{
+    background-color: #4caf50;
+    transform: translateX(44px);
+
+}
+
+.OFF{
+    background-color: #f44336;
+    transform: translateX(0);
+
+}
+
+
+body.dark {
+
+  --bg: #0a0a0f;
+  --surface: #111118;
+  --border: rgba(255, 255, 255, 0.07);
+  --gold: #f5c518;
+  --gold-dim: rgba(245, 197, 24, 0.12);
+  --text: #e2e2e2;
+  --muted: #555;
+  --red: #e63946;
+}
+
+
+body.light {
+
+  --bg: #ffffff;              /* main background */
+  --surface: #f8f9fb;         /* cards / sections */
+  --border: rgba(0, 0, 0, 0.08);
+  --gold: #d4a017;            /* thoda soft gold */
+  --gold-dim: rgba(212, 160, 23, 0.12);
+  --text: #111111;            /* main text */
+  --muted: #6b7280;           /* gray text */
+  --red: #d62828;             /* softer red */
+}
+
+.footer-wrap {
+  background: var(--bg);
+  color: var(--text);
+}

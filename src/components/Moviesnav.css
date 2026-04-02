@@ -1,9 +1,20 @@
 @import url('https://www.milesweb.in/blog/website-design/best-html-fonts/?gad_source=1&gad_campaignid=22176787914&gbraid=0AAAAADtt_lkk467SnK4yVK74XL8h1p3cF&gclid=Cj0KCQiA49XMBhDRARIsAOOKJHY8d__dOGP1ttgsIEeRKKp5ucLu9stThs0J8gbwAtBchy020SBaysaAj7lEALw_wcB');
+
+:root{
+--bg:#0a0a0f;
+--text:#e2e2e2;
+--surface:#111118;
+--border:rgba(255,255,255,0.07);
+--gold:#f5c518;
+--gold-dim:rgba(245,197,24,0.12);
+--muted:#777;
+--red:#e63946;
+}
 body{
      font-family:Arial, Helvetica, sans-serif;
      margin:0px;
      padding:0px;
-     background-color: rgb(8, 22, 22);
+     background-color: rgb(0, 0, 0);
 }
 .container{
     max-width:1200px;
@@ -12,7 +23,7 @@ body{
     background-color: rgb(255, 255, 255);
     border-radius: 10px;
     text-align: center;
-    box-shadow:0 4px 6px rgb(8, 22, 22);
+    box-shadow:0 4px 6px rgb(0, 0, 0);
     
 }
 h1{
@@ -43,3 +54,45 @@ h1{
     background-color:floralwhite;
     border-radius: 20px;
 }
+.main{
+    background-color: var(--border)
+}
+.movie-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+
+}
+
+.movie-card{
+    height: 350px;
+    margin: 10px 10px;
+  background: var(--surface);
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  transition: all 0.3s ease;
+  position: relative;
+}
+.movie-card:hover{
+    transform: translateY(-8px) scale(1.02);
+    box-shadow:0 15px 30px rgba(0,0,0,0.7);
+    border-color:var(--gold);
+}
+.movie-card img{
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+}
+.movies-content{
+    padding:12px;
+}
+.movies-title{
+    font-size:16px;
+    font-weight: 600;
+    color:var(--text);
+    margin-bottom: 5px;
+}
+
+
