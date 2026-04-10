@@ -3,15 +3,20 @@ import "./Header.css";
 import { Link } from "react-router-dom";
 import Sign from "./Sign";
 import Home from "./Home";
+import { useNavigate } from "react-router-dom";
 
-const Header = ({ siteName }) => {
+const Header = ({ siteName, query, setQuery,onSearch  }) => {
 
-  const [searchTerm, setSearchTerm] = useState("");
+  
 
-  const handleSearch = (e) => {
-    setSearchTerm(e.target.value);
-    console.log("Searching:", e.target.value);
-  };
+  const navigate = useNavigate();
+
+const handleEnter = (e) => {
+  if (e.key === "Enter") {
+    onSearch(query);   
+    navigate("/Home");
+  }
+};
 
   return (
     <header className="navbar">
@@ -37,12 +42,15 @@ const Header = ({ siteName }) => {
         <div className="search-container">
           <span className="search-icon">🔍</span>
 
-          <input
-            type="text"
-            placeholder="Search movies..."
-            value={searchTerm}
-            onChange={handleSearch}
-          />
+          
+             <input
+      type="text"
+      placeholder="Search Movies"
+      value={query}
+      onChange={(e) => setQuery(e.target.value)}
+      className="Searchinput"
+      onKeyDown={handleEnter}
+    />
 
         </div>
         
