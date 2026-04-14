@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import "./Header.css";
 import { Link } from "react-router-dom";
-import Sign from "./Sign";
-import Home from "./Home";
+
 import { useNavigate } from "react-router-dom";
 
 const Header = ({ siteName, query, setQuery,onSearch  }) => {
@@ -53,7 +52,9 @@ const handleEnter = (e) => {
     />
 
         </div>
-        
+         <Link to="/watchlist" className="watchlist-btn">
+          ❤️ Watchlist
+        </Link>
          <Link to= "/Sign" className="sign-in-btn"> Sign In </Link>
          
       

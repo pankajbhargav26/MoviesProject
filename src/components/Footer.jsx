@@ -144,7 +144,7 @@ export default function Footer() {
         <div className="brand-col">
           <div className="brand-logo">
             <span className="logo-dot" />
-            REELWISE
+            REELWORLD
           </div>
           <p className="brand-desc">
             Your trusted guide to the world of cinema. Expertly curated picks,
@@ -206,7 +206,7 @@ export default function Footer() {
       {/* Bottom */}
       <div className="footer-bottom">
         <p className="footer-copy">
-          © {currentYear} <span>ReelWise</span>. All rights reserved. Made with ♥ for movie lovers.
+          © {currentYear} <span>ReelWorld</span>. All rights reserved. Made with ♥ for movie lovers.
         </p>
       </div>
     </footer>

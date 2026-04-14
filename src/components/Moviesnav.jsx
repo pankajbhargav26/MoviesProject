@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
 import './Moviesnav.css'
-
-export default function Movies({ movies, query, setQuery, onSearch}) {
+import { useNavigate } from "react-router-dom";
+export default function Movies({ movies, query, setQuery, onSearch, filterByGenre,
+  showAll,}) {
   //  const [query, setQuery] = useState("");
   // const [movies, setMovies] = useState([]);
-
+ const navigate = useNavigate();
   // // Fetch movies from TMDb
   // const fetchMovies = async (searchTerm) => {
   //   if (!searchTerm) return; // prevent empty search
@@ -46,12 +47,23 @@ export default function Movies({ movies, query, setQuery, onSearch}) {
         >
           <AiOutlineSearch />
         </button>
+        <button onClick={() => filterByGenre(28)}>Action</button>
+        <button onClick={() => filterByGenre(18)}>Drama</button>
+        <button onClick={() => filterByGenre(35)}>Comedy</button>
+        <button onClick={showAll}>All</button>
+
+
       </div>
 
       <div className="movie-list">
         {movies.length > 0 ? (
           movies.map((movie, index) => (
-            <div key={movie.id + index} className="movie-card">
+            <div
+              key={movie.id + index}
+              className="movie-card"
+              onClick={() => navigate("/movie", { state: movie })}
+              style={{ cursor: "pointer" }}
+            >
               <img
                 src={movie.poster_path
                   ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
