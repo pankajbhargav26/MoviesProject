@@ -1,12 +1,23 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { AiOutlineSearch } from "react-icons/ai";
-import './Moviesnav.css'
+import "./Moviesnav.css";
 import { useNavigate } from "react-router-dom";
-export default function Movies({ movies, query, setQuery, onSearch, filterByGenre,
-  showAll,}) {
-  //  const [query, setQuery] = useState("");
+
+export default function Movies({
+  movies,
+  query,
+  setQuery,
+  onSearch,
+  filterByGenre,
+  showAll,
+}) {
+  		
+		
+		
+		
+		 //  const [query, setQuery] = useState("");
   // const [movies, setMovies] = useState([]);
- const navigate = useNavigate();
+ 
   // // Fetch movies from TMDb
   // const fetchMovies = async (searchTerm) => {
   //   if (!searchTerm) return; // prevent empty search
@@ -22,75 +33,86 @@ export default function Movies({ movies, query, setQuery, onSearch, filterByGenr
   // useEffect(() => {
   //   fetchMovies("avengers"); // show some movies on initial load
   // }, []);
+  const navigate = useNavigate();
 
   return (
     <div className="main">
-
-   
-
-
       <h1 className="h1">Movies</h1>
 
       <div className="search">
-       <input
-  type="text"
-  placeholder="Search Movies"
-  value={query}
-  onChange={(e) => setQuery(e.target.value)}
-  className="Searchinput"
-  onKeyDown={(e) => e.key === "Enter" && onSearch(query)}
-/>
+        <input
+          type="text"
+          placeholder="Search Movies"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          className="Searchinput"
+          onKeyDown={(e) => e.key === "Enter" && onSearch(query)}
+        />
 
         <button
           className="SearchButton"
-           onClick={() => onSearch(query)}
+          onClick={() => onSearch(query)}
         >
           <AiOutlineSearch />
         </button>
-        <button onClick={() => filterByGenre(28)}>Action</button>
-        <button onClick={() => filterByGenre(18)}>Drama</button>
-        <button onClick={() => filterByGenre(35)}>Comedy</button>
-        <button onClick={showAll}>All</button>
 
+        {/* ✅ FIXED BUTTONS */}
+        <button className="action-btn" onClick={() => filterByGenre(28)}>
+          Action
+        </button>
 
+        <button className="drama-btn" onClick={() => filterByGenre(18)}>
+          Drama
+        </button>
+
+        <button className="comedy-btn" onClick={() => filterByGenre(35)}>
+          Comedy
+        </button>
+
+        <button className="all-btn" onClick={showAll}>
+          All
+        </button>
       </div>
 
       <div className="movie-list">
-        {movies.length > 0 ? (
-          movies.map((movie, index) => (
+        {movies?.length > 0 ? (
+          movies.map((movie) => (
             <div
-              key={movie.id + index}
+              key={movie.id}
               className="movie-card"
               onClick={() => navigate("/movie", { state: movie })}
-              style={{ cursor: "pointer" }}
             >
               <img
-                src={movie.poster_path
-                  ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
-                  : "https://via.placeholder.com/150"
+                src={
+                  movie.poster_path
+                    ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+                    : "https://via.placeholder.com/150"
                 }
                 alt={movie.title}
               />
+
               <div className="overlay">
-              <h3>{movie.title}</h3>
-              <p>
-                {movie.overview ? movie.overview.slice(0,80)+"...":"No description avilable"}
-              </p>
-              
-              <div className="movie-info">
-  <span>⭐ {movie.vote_average?.toFixed(1)}</span>
-  <span>{movie.release_date?.slice(0,4)}</span>
-</div>
-<button className="play-btn">▶ Play</button>
-</div>
-   </div>
+                <h3>{movie.title}</h3>
+
+                <p>
+                  {movie.overview
+                    ? movie.overview.slice(0, 80) + "..."
+                    : "No description available"}
+                </p>
+
+                <div className="movie-info">
+                  <span>⭐ {movie.vote_average?.toFixed(1)}</span>
+                  <span>{movie.release_date?.slice(0, 4)}</span>
+                </div>
+
+                <button className="play-btn">▶ Play</button>
+              </div>
+            </div>
           ))
         ) : (
           <p>No movies found</p>
         )}
       </div>
     </div>
-     
-   
   );
-} 
+}

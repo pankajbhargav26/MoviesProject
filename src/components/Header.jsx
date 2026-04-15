@@ -38,7 +38,7 @@ const handleEnter = (e) => {
 
       <div className="navbar-right">
 
-        <div className="search-container">
+        {/* <div className="search-container">
           <span className="search-icon">🔍</span>
 
           
@@ -51,7 +51,7 @@ const handleEnter = (e) => {
       onKeyDown={handleEnter}
     />
 
-        </div>
+        </div> */}
          <Link to="/watchlist" className="watchlist-btn">
           ❤️ Watchlist
         </Link>

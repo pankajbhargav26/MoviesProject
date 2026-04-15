@@ -4,18 +4,18 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/Header.jsx";
 import Footer from "./components/Footer.jsx";
 import Popular from "./components/Popular.jsx";
-import Home from "./components/Home.jsx";
-import New from "./components/New.jsx"
-import List from "./components/List.jsx"
+import New from "./components/New.jsx";
+import List from "./components/List.jsx";
 import MovieDetails from "./components/MovieDetails.jsx";
 import Watchlist from "./components/Watchlist.jsx";
+import Sign from "./components/Sign.jsx";
 
 function App() {
   const [query, setQuery] = useState("");
-  const [movies, setMovies] = useState([]);              // ORIGINAL DATA
-  const [filteredMovies, setFilteredMovies] = useState([]); // DISPLAY DATA
+  const [movies, setMovies] = useState([]);
+  const [filteredMovies, setFilteredMovies] = useState([]);
 
-  // 🎯 FETCH MOVIES (SEARCH)
+  // 🎯 SEARCH / FETCH MOVIES
   const fetchMovies = async (searchTerm) => {
     if (!searchTerm) return;
 
@@ -26,26 +26,24 @@ function App() {
     const data = await res.json();
     const results = data.results || [];
 
-    // reset both
     setMovies(results);
     setFilteredMovies(results);
   };
 
-  // default load
+  // 🎯 DEFAULT LOAD
   useEffect(() => {
     fetchMovies("avengers");
   }, []);
 
-  // 🎯 FILTER (ALWAYS FROM ORIGINAL DATA)
+  // 🎯 FILTER BY GENRE
   const filterByGenre = (genreId) => {
     const filtered = movies.filter((movie) =>
       movie.genre_ids?.includes(genreId)
     );
-
     setFilteredMovies(filtered);
   };
 
-  // 🎯 RESET (SHOW ALL ORIGINAL)
+  // 🎯 RESET FILTER
   const showAll = () => {
     setFilteredMovies(movies);
   };
@@ -61,7 +59,7 @@ function App() {
                 query={query}
                 setQuery={setQuery}
                 onSearch={fetchMovies}
-                siteName={"ReelWorld"}
+                siteName="ReelWorld"
               />
 
               <Movies
@@ -77,68 +75,138 @@ function App() {
             </>
           }
         />
-         <Route
-          path="/Popular"
+
+        {/* 🏠 HOME PAGE */}
+        <Route
+          path="/Home"
           element={
             <>
-            <Header
-             query={query}
+              <Header
+                query={query}
                 setQuery={setQuery}
                 onSearch={fetchMovies}
-                siteName={"ReelWorld"}
-            />
-            <Popular/>
-            <Footer/>
+                siteName="ReelWorld"
+              />
+
+              <Movies
+                movies={filteredMovies}
+                query={query}
+                setQuery={setQuery}
+                onSearch={fetchMovies}
+                filterByGenre={filterByGenre}
+                showAll={showAll}
+              />
+
+              <Footer />
             </>
           }
-         />
-           <Route
-          path="/List"
+        />
+            <Route
+          path="/Sign"
           element={
             <>
-            <Header
-             query={query}
+              <Header
+                query={query}
                 setQuery={setQuery}
                 onSearch={fetchMovies}
-                siteName={"ReelWorld"}
-            />
-            <List/>
-            <Footer/>
+                siteName="ReelWorld"
+              />
+              <Sign/>
+
+              <Footer />
             </>
           }
-         />
-           <Route
+        />
+
+        {/* 🔥 NEW MOVIES */}
+        <Route
           path="/New"
           element={
             <>
-            <Header
-             query={query}
+              <Header
+                query={query}
                 setQuery={setQuery}
                 onSearch={fetchMovies}
-                siteName={"ReelWorld"}
-            />
-            <New/>
-            <Footer/>
+                siteName="ReelWorld"
+              />
+
+              <New
+                query={query}
+                setQuery={setQuery}
+                onSearch={fetchMovies}
+              />
+
+              <Footer />
             </>
           }
-         />
-            {/* 🔥 Movie Details Page */}
-        <Route path="/movie" element={
-          <>
-            <Header siteName="REELWISE" />
-            <MovieDetails />
-            <Footer />
-          </>
-        } />
+        />
 
-        {/* 🔥 NEW WATCHLIST PAGE */}
-        <Route path="/Watchlist" element={
-          <>
-            <Header siteName="REELWISE" />
-            <Watchlist />
-            <Footer />
-          </>
-        } />
+        {/* 🔥 POPULAR MOVIES */}
+        <Route
+          path="/Popular"
+          element={
+            <>
+              <Header
+                query={query}
+                setQuery={setQuery}
+                onSearch={fetchMovies}
+                siteName="ReelWorld"
+              />
+
+              <Popular
+                query={query}
+                setQuery={setQuery}
+                onSearch={fetchMovies}
+              />
+
+              <Footer />
+            </>
+          }
+        />
+
+        {/* 📃 LIST PAGE */}
+        <Route
+          path="/List"
+          element={
+            <>
+              <Header
+                query={query}
+                setQuery={setQuery}
+                onSearch={fetchMovies}
+                siteName="ReelWorld"
+              />
+
+              <List movies={movies} />
+
+              <Footer />
+            </>
+          }
+        />
+
+        {/* 🎬 MOVIE DETAILS */}
+        <Route
+          path="/movie"
+          element={
+            <>
+              <Header siteName="ReelWorld" />
+              <MovieDetails />
+              <Footer />
+            </>
+          }
+        />
+
+        {/* ❤️ WATCHLIST */}
+        <Route
+          path="/Watchlist"
+          element={
+            <>
+              <Header siteName="ReelWorld" />
+              <Watchlist />
+              <Footer />
+            </>
+          }
+        />
+
       </Routes>
     </BrowserRouter>
   );

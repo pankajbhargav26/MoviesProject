@@ -1,3 +1,12 @@
+:root {
+  --bg: #0f172a;
+  --surface: #1e293b;
+  --border: #334155;
+  --text: #e2e8f0;
+  --muted: #94a3b8;
+  --gold: #facc15;
+}
+
 /* Container */
 .container {
   min-height: 100vh;
@@ -112,23 +121,6 @@
 .form p a {
   color: var(--gold);
   font-weight: 500;
-}
-
-/* Signup simple layout */
-.form-container h2 {
-  text-align: center;
-  color: var(--text);
-  margin-bottom: 10px;
-}
-
-.form-container input {
-  width: 100%;
-  margin-bottom: 10px;
-  padding: 10px;
-  border-radius: 6px;
-  border: 1px solid var(--border);
-  background: var(--surface);
-  color: var(--text);
 }
 
 /* Responsive */

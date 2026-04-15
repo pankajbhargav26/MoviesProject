@@ -1,0 +1,126 @@
+/* 🌑 BACKGROUND */
+.list-page {
+  background: #0a0f1c;
+  min-height: 100vh;
+  padding: 40px 60px;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+/* 🔥 TITLE */
+.list-title {
+  font-size: 34px;
+  font-weight: 700;
+  margin-bottom: 25px;
+  color: #ff3d3d;
+}
+
+/* 📦 CONTAINER */
+.list-container {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* 🎬 BIG LIST CARD */
+.list-row {
+  display: flex;
+  align-items: center;
+  background: #141a2a;
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  /* 🔥 BIG HEIGHT */
+  height: 170px;
+  border: 1px solid rgba(255,255,255,0.05);
+}
+
+/* ✨ HOVER */
+.list-row:hover {
+  transform: translateY(-5px);
+  background: #1a2236;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.6);
+}
+
+/* 🖼 BIG IMAGE */
+.list-img {
+  width: 260px;
+  min-width: 260px;
+  height: 100%;
+  overflow: hidden;
+}
+
+.list-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: 0.4s ease;
+}
+
+/* IMAGE ZOOM */
+.list-row:hover .list-img img {
+  transform: scale(1.08);
+  filter: brightness(0.7);
+}
+
+/* 🧾 CONTENT */
+.list-content {
+  padding: 20px 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* TITLE BIGGER */
+.list-content h2 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #ffffff;
+}
+
+/* COUNT */
+.list-content p {
+  font-size: 13px;
+  color: #ffcc00;
+}
+
+/* 🔴 DOT STYLE */
+.list-content p::before {
+  content: "● ";
+  color: #ff3d3d;
+}
+
+/* 📱 RESPONSIVE */
+@media (max-width: 900px) {
+  .list-page {
+    padding: 25px;
+  }
+
+  .list-row {
+    height: 150px;
+  }
+
+  .list-img {
+    width: 200px;
+    min-width: 200px;
+  }
+}
+
+@media (max-width: 600px) {
+  .list-row {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .list-img {
+    width: 100%;
+    height: 200px;
+  }
+
+  .list-content {
+    padding: 15px;
+  }
+}
