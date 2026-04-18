@@ -9,6 +9,16 @@
 --red:#e63946;
 }
 
+[data-theme="light"] {
+    
+    --bg: #0a0a0f;
+  --surface: #ffffff;
+  --border: #e2ddd6;
+  --text: #1e1918;
+  --muted: #6b6560;
+  --gold: #b45309;     /* keep same accent */
+}
+
 /* reset */
 body{
 margin:0;

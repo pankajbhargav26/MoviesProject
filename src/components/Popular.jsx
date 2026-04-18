@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Movies from "./Moviesnav";
 
-export default function Popular({ query, setQuery, onSearch }) {
+export default function Popular({ query, setQuery, onSearch,filterByGenre }) {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
@@ -12,7 +12,7 @@ export default function Popular({ query, setQuery, onSearch }) {
       .then((data) => setMovies(data.results || []));
   }, []);
 
-  return (
+  return ( 
     <Movies
       movies={movies}
       query={query}

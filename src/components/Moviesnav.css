@@ -9,9 +9,14 @@
 }
 
 [data-theme="light"] {
-    --text: #111;
-    --bg:#e2e8f0;
+   --bg: #f5f9ff;        /* very light blue tint */
+  --surface: #ffffff;   /* cards */
+  --border: #dbeafe;    /* light blue border */
+  --text: #0f172a;      /* strong readable text */
+  --muted: #64748b;     /* soft slate */
+  --gold: #f59e0b;     /* keep same accent */
 }
+
 body {
   font-family: Arial, Helvetica, sans-serif;
   margin: 0;

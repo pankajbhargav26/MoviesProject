@@ -299,14 +299,12 @@ body.dark {
 
 body.light {
 
-  --bg: #ffffff;              /* main background */
-  --surface: #f8f9fb;         /* cards / sections */
-  --border: rgba(0, 0, 0, 0.08);
-  --gold: #d4a017;            /* thoda soft gold */
-  --gold-dim: rgba(212, 160, 23, 0.12);
-  --text: #111111;            /* main text */
-  --muted: #6b7280;           /* gray text */
-  --red: #d62828;             /* softer red */
+  --bg: #f5f9ff;        /* very light blue tint */
+  --surface: #ffffff;   /* cards */
+  --border: #dbeafe;    /* light blue border */
+  --text: #0f172a;      /* strong readable text */
+  --muted: #64748b;     /* soft slate */
+  --gold: #f59e0b;         /* softer red */
 }
 
 .footer-wrap {

@@ -15,7 +15,7 @@ function App() {
   const [movies, setMovies] = useState([]);
   const [filteredMovies, setFilteredMovies] = useState([]);
 
-  // 🎯 SEARCH / FETCH MOVIES
+  
   const fetchMovies = async (searchTerm) => {
     if (!searchTerm) return;
 
@@ -30,20 +30,19 @@ function App() {
     setFilteredMovies(results);
   };
 
-  // 🎯 DEFAULT LOAD
+  
   useEffect(() => {
     fetchMovies("avengers");
   }, []);
+const filterByGenre = async (genreId) => {
+  const res = await fetch(
+ `https://api.themoviedb.org/3/discover/movie?api_key=8566b828097d33143f990cf454f5fa9a&with_genres=${genreId}`
+  );
 
-  // 🎯 FILTER BY GENRE
-  const filterByGenre = (genreId) => {
-    const filtered = movies.filter((movie) =>
-      movie.genre_ids?.includes(genreId)
-    );
-    setFilteredMovies(filtered);
-  };
+  const data = await res.json();
+  setFilteredMovies(data.results || []);
+};
 
-  // 🎯 RESET FILTER
   const showAll = () => {
     setFilteredMovies(movies);
   };
@@ -76,7 +75,7 @@ function App() {
           }
         />
 
-        {/* 🏠 HOME PAGE */}
+       
         <Route
           path="/Home"
           element={
@@ -118,7 +117,7 @@ function App() {
           }
         />
 
-        {/* 🔥 NEW MOVIES */}
+        
         <Route
           path="/New"
           element={
@@ -141,7 +140,7 @@ function App() {
           }
         />
 
-        {/* 🔥 POPULAR MOVIES */}
+       
         <Route
           path="/Popular"
           element={
@@ -155,8 +154,11 @@ function App() {
 
               <Popular
                 query={query}
-                setQuery={setQuery}
-                onSearch={fetchMovies}
+        setQuery={setQuery}
+        onSearch={fetchMovies}
+        movies={filteredMovies}
+        filterByGenre={filterByGenre}
+        showAll={showAll}
               />
 
               <Footer />
@@ -164,7 +166,7 @@ function App() {
           }
         />
 
-        {/* 📃 LIST PAGE */}
+       
         <Route
           path="/List"
           element={
@@ -183,7 +185,7 @@ function App() {
           }
         />
 
-        {/* 🎬 MOVIE DETAILS */}
+       
         <Route
           path="/movie"
           element={
@@ -195,7 +197,7 @@ function App() {
           }
         />
 
-        {/* ❤️ WATCHLIST */}
+       
         <Route
           path="/Watchlist"
           element={

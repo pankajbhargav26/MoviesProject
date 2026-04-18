@@ -3,13 +3,7 @@ import { AiOutlineSearch } from "react-icons/ai";
 import "./Moviesnav.css";
 import { useNavigate } from "react-router-dom";
 
-export default function Movies({
-  movies,
-  query,
-  setQuery,
-  onSearch,
-  filterByGenre,
-  showAll,
+export default function Movies({movies,query,setQuery,  onSearch,filterByGenre, showAll,
 }) {
   		
 		
@@ -56,7 +50,6 @@ export default function Movies({
           <AiOutlineSearch />
         </button>
 
-        {/* ✅ FIXED BUTTONS */}
         <button className="action-btn" onClick={() => filterByGenre(28)}>
           Action
         </button>
@@ -75,7 +68,7 @@ export default function Movies({
       </div>
 
       <div className="movie-list">
-        {movies?.length > 0 ? (
+        {movies?.length > 0 ? ( 
           movies.map((movie) => (
             <div
               key={movie.id}
